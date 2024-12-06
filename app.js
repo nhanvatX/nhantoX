@@ -51,7 +51,7 @@ const checkAuth = (req, res, next) => {
 
   if (sessionMap.has(token) == true) {
         // Kiểm tra xem token có hết hạn không
-      if (session.expiresAt < Date.now()) {
+      if (token.expiresAt < Date.now()) {
         // Nếu token hết hạn, xóa token và gửi thông báo lỗi
         sessionMap.delete(token);
         return res.status(401).json({ message: 'Session expired. Please log in again.' });
